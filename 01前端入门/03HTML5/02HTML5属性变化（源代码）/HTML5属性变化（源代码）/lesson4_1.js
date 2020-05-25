@@ -1,0 +1,1 @@
+document.write("这里是写在script文件中的文字！");

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         //补充代码
+         function Animal(name,num){
+             this.name = name;
+             this.num = num;
+         }
+         Animal.prototype.getInfo = function(){
+            alert(this.name +this.num);
+         }
+         function Cat(name,num){
+             Animal.call(this,name,num);
+         }
+         function Dog(name,num){
+             Animal.apply(this,[name,num]);
+         }
+         var cat = new Cat('猫',20);
+         var dog = new Dog('狗',30);
+         cat.getInfo();
+         dog.getInfo();
+    </script>
+</body>
+</html>

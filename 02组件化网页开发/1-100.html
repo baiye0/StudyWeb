@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <p>
+        请选择菜单：
+        <select id="menu">
+            <option>请选择</option>
+            <option value="fruit">水果</option>
+            <option value="cake">蛋糕</option>
+            <option value="nuts">坚果</option>
+        </select>
+    </p>
+    <p>该系列有：<span></span></p>
+    <script>
+    // 此处写代码
+    // 获取元素
+    var menu = document.querySelector('#menu');
+    var opt = menu.getElementsByTagName('option');
+    var span = document.getElementsByTagName('span')[0];
+    var fruit = ['苹果','香蕉','梨'];
+    var cake = ['慕斯','奶酪'];
+    var nuts = ['碧根果','巴旦木'];
+    menu.onchange = function(){
+        switch(this.value){
+            case 'fruit':span.innerHtml = fruit;break;
+            case 'cake':span.innerHtml = cake;break;
+            case 'nuts':span.innerHtml = nuts;break;
+        }
+    }
+    
+    </script>
+</body>
+</html>

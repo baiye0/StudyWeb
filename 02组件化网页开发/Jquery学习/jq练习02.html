@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+    .container {
+        width: 240px;
+        height: 185px;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+
+    .conTitle {
+        height: 50px;
+    }
+
+    nav {
+        width: 25%;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        float: left;
+        background-color: #000;
+        font-weight: bold;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    nav:hover {
+        background-color: #ddd;
+        color: #000;
+    }
+
+    .content {
+        position: relative;
+    }
+
+    .img1 {
+        opacity: 1;
+    }
+
+    img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="conTitle">
+            <nav>pwa</nav>
+            <nav>node</nav>
+            <nav>vue</nav>
+            <nav>小程序</nav>
+        </div>
+        <div class="content">
+            <img class="img1" src="https://img.mukewang.com/5c21e60d0822d58e06000338-240-180.jpg"/>
+            <img class="img2" src="https://img2.mukewang.com/szimg/59c860220001247d05400300-240-180.jpg"/>
+            <img class="img3" src="https://img3.mukewang.com/5c0a36790001b17606000338-240-180.jpg"/>
+            <img class="img4" src="https://img4.mukewang.com/5c32b1ca0820a49f06000338-240-180.jpg"/>
+        </div>
+        </div>
+        <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.js"></script>
+        <script type="text/javascript">
+        $(document).ready(function() {
+            $("nav").click(function() {
+                // 此处写代码
+                $('nav').click(function(){
+                    $('img').eq($(this).index()).css({'opacity':'1'}).siblings().css({'opacity':'1'});
+                });
+            })
+
+        })
+        </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function text(){
+			var num = 1;
+			this.subTest = function(){
+				return ++num;
+			}
+			return subTest;
+		}
+		var text2 = text();
+		var text1 = text();
+		
+		console.log(subTest());
+		console.log(text1());
+		console.log(text1());
+		console.log(text2());		//为什么这个输出是3		
+
+
+	</script>
+</body>
+</html>

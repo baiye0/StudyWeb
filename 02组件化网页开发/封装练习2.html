@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>5-4</title>
+</head>
+<body>
+<script>
+
+//补充代码
+    function Student(){
+        var privateStore = {
+        }
+        function _set(name,sex,age){
+            privateStore.name=name;
+            privateStore.sex=sex;
+            privateStore.age=age;
+        }
+        function _get(){
+            return privateStore;
+        }
+        this.get = function(){
+            return _get();
+        }
+        this.set = function(name,sex,age){
+            return _set(name,sex,age);
+        }
+    }
+    var student1 = new Student();
+    student1.set('小明','男',23);
+    for(var k in  student1.get()){
+        document.write(k+':'+student1.get()[k]);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>2-3</title>
+    <style type="text/css">
+        /* 此处写代码*/
+        section{
+            width:300px;
+            height:200px;
+            background:red;
+            margin:0 auto;
+        }
+        div{
+            width:0;
+            height:0;
+            border-left:100px solid transparent;
+            border-bottom:80px solid yellow;
+            border-right:100px solid transparent;
+            transform:rotate(36deg);
+            position:relative;
+            margin:100px;
+        }
+        div::after{
+            content:"";
+            display:block;
+            width:0;
+            height:0;
+            border-left:100px solid transparent;
+            border-bottom:80px solid yellow;
+            border-right:100px solid transparent;
+            position:relative;
+            left:-94px;
+            top:-71px;
+            transform:rotate(74deg);
+        }
+        div::before{
+            content:"";
+            display:block;
+            width:0;
+            height:0px;
+            border-left:100px solid transparent;
+            border-bottom:80px solid yellow;
+            border-right:100px solid transparent;
+            position:relative;
+            left:-95px;
+            top:-11px;
+            transform:rotate(-68deg);
+        }
+        .one{
+            transform: scale(.3) translate(-500px,50px) rotate(35deg);
+        }
+        .two{
+            transform: scale(.1) translate(-850px,-2000px)rotate(-20deg);
+        }
+        .three{
+            transform: scale(.1) translate(-700px,-3550px)rotate(20deg);
+        }
+        .four{
+            transform: scale(.1) translate(-700px,-5000px)rotate(35deg);
+        }
+        .five{
+            transform: scale(.1) translate(-850px,-6600px)rotate(55deg);
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- 此处写代码 -->
+    <section>
+        <div class="one"></div>
+        <div class="two"></div>
+        <div class="three"></div>
+        <div class="four"></div>
+        <div class="five"></div>
+    </section>
+</body>
+</html>

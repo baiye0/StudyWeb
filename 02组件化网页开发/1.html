@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<a href="#">123</a>
+	<a href="#">123</a>
+	<a href="#">123</a>
+	<a href="#">123</a>
+	<a href="#">123</a>
+	<script type="text/javascript">
+		var ls = document.getElementsByTagName('a');
+		for(let i =0;i<ls.length;i++){
+			ls[i].onclick = function(){
+				alert(i);
+				console.log('我是第'+(i++)+'个作用域');
+			}
+		}
+	</script>
+	
+</body>
+</html>

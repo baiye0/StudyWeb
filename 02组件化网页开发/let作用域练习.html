@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>jquery</li>
+        <li>HTML5</li>
+        <li>CSS3</li>
+        <li>ES6</li>
+    </ul>
+    <script type="text/javascript">
+        //补充代码
+        var lis = document.getElementsByTagName('li');
+        for(let i =0;i<lis.length;i++){
+        	let dfont = lis[i].style.fontSize;
+            let dcolor = lis[i].style.color;
+            let text = lis[i].innerText;
+            lis[i].onmouseover = function(){
+                
+                this.style.fontSize='25px';
+                this.style.color ='red';
+                this.innerText +='我是第'+(i+1)+'个';
+            }
+            lis[i].onmouseout = function(){
+                this.style.fontSize = dfont;
+                this.style.color = dcolor;
+                this.innerText =text;
+            }
+        }
+    </script>
+</body>
+</html>

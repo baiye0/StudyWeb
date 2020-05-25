@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">  
+		// json格式
+		var obj = {
+		    name:'imooc',
+		    action:function(){
+		        alert('前端');
+		    }
+		}
+		
+		// Object方式
+		var obj1 = new Object();
+		obj1.name = 'imooc';
+		obj1.action = function(){
+		    alert('前端');
+		}
+		
+		
+		// 构造函数方式
+		function obj0(name,action){
+		    this.name = name;
+		    this.action = action;
+		}
+		var obj3 = new obj0('imooc',function(){alert('前端')});
+		obj3.action();
+
+	</script>
+</body>
+</html>
