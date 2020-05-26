@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="div1">
+		<p id='p1'>激活</p>
+		<p id='p2'>取消</p>
+		<p id='p3'>取消</p>
+		<p id='p4'>取消</p>
+	</div>
+	<div class="div2">
+		<p id='p5'>取消</p>
+		<p id='p6'>取消</p>
+	</div>
+	<script type="text/javascript">
+		var p1 = document.querySelector('#p1');
+		var body = document.body;
+		function addEvent(elem,type,fn){
+			elem.addEventListener(type,fn);
+		}
+		addEvent(p1,'click',function(e){
+			//阻止事件冒泡
+			e.stopPropagation();
+			alert('激活');
+		})
+		addEvent(body,'click',function(){
+			alert('取消');
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="div1">
+		<a href="#">a1</a>
+		<a href="#">a2</a>
+		<a href="#">a3</a>
+		<a href="#">a4</a>
+		<!-- 会新增更多的A标签 -->
+	</div>
+	<script type="text/javascript">
+		var div = document.querySelector('#div1');
+		div1.addEventListener('click',function(e){
+			console.log(e.target.nodeName);  
+			if(e.target.nodeName === 'A'){
+				alert(e.target.innerHTML);
+			}
+			// e.target是获取当前点击的dom节点
+
+			// event.target.nodeName 获取事件触发元素标签名（li，p，div，img，button…）
+
+			// event.target.id　获取事件触发元素id
+
+			// event.target.className　获取事件触发元素classname
+
+			// event.target.innerHTML 获取事件触发元素的内容（li）
+
+		})
+	</script>
+</body>
+</html>

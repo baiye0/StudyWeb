@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="div1">
+		<a href="#">a1</a>
+		<a href="#">a2</a>
+		<a href="#">a3</a>
+		<a href="#">a4</a>
+		<!-- 会新增更多的A标签 -->
+	</div>
+	<script type="text/javascript">
+		function bindEvent(elem,type,selector,fn){
+			if(!fn){
+				fn = selector;
+				selector = null;
+			}
+			elem.addEventListener(type,function(e){
+				if(selector){  //判断是否使用代理
+					var target = e.target;
+					console.log(target.matches(selector));
+					if(target.matches(selector)){
+						console.log(target);
+						console.log(this);
+						fn.call(target,e);  //改变fnthis的指向
+					}
+				}else{
+					fn(e);
+				}
+			})
+		}
+
+		var div1 = document.getElementById('div1');
+		bindEvent(div1,'click','a',function(e){
+			console.log(this.innerHTML);
+		})
+	</script>
+</body>
+</html>
