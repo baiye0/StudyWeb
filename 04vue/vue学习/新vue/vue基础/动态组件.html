@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src='../vue.js'></script>
+	<style type="text/css">
+		.btn{
+			width:120px;
+			height: 30px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<button class="btn"
+				v-for='(item,index) in list'
+				@click='handleClick(index)'
+				>{{item}}</button>
+		<component :is='"div"+idx'></component>
+	</div>
+	<script>
+		Vue.component('div0',{
+			template:'<div>前端工程师</div>'
+		});
+		Vue.component('div1',{
+			template:'<div>java工程师</div>'
+		});
+		Vue.component('div2',{
+			template:'<div>软件测试工程师</div>'
+		})
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				idx:'0',
+				list:['前端工程师', 'Java工程师', '软件测试工程师'],
+			},
+			methods:{
+				handleClick:function(idx){
+					this.idx=idx;
+				}
+			}
+
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        {
+            function loadImg(url) {
+                return new Promise(resolve => {
+                    let im = document.createElement('img');
+                    im.src=url;
+                    setTimeout(() => {
+                        document.body.appendChild(im);
+                        resolve();
+                    }, 1000);
+                })
+            }
+            loadImg('http://climg.mukewang.com/5b16558d00011ed506000338.jpg')
+            .then(()=>{
+                console.log('第一张图片');
+                return loadImg('http://climg.mukewang.com/5b165603000146ca06000338.jpg ');
+            })
+            .then(()=>{
+                return loadImg('http://climg.mukewang.com/5b1656140001c89906000338.jpg ');
+            })
+
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="./vue.js"></script>
+</head>
+<body>
+	<div  id="app">
+		<input type="text" v-model="inputValue"> 
+		<!-- vue中绑定事件:v-on -->
+		<button v-on:click="handleBtnclick">提交</button>
+		<ul>
+			<todo-item v-for="item in list"
+						v-bind:content1="item">
+						<!-- 将item传入到content然后通过v-bind方法传给组件里 -->
+			</todo-item>
+
+		</ul>
+	</div>
+	<script type="text/javascript">
+
+		//全局组件：
+		// Vue.component("TodoItem",{
+		// 	props:['content1'], //获取传过来的content1值
+		// 	template:"<li>{{content1}}</li>"
+		// })
+
+		//普通组件
+		var TodoItem = {
+			props:['content1'], //props接受外部传输过来的数据
+			template:'<li>{{content1}}</li>',//组件模板
+		}
+
+		var app = new Vue({
+			el:'#app', //接管区域
+			components:{  //注册组件
+				TodoItem:TodoItem
+			},
+			data:{ //固定写法
+				list:[],
+				inputValue:''
+
+			},
+			methods:{ //固定写法
+				handleBtnclick:function(){
+					this.list.push(this.inputValue);
+					this.inputValue='';
+				}
+			}
+		})
+	</script>
+</body>
+</html>

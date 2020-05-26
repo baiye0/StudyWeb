@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组件间传值</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 在此补充代码 -->
+        <input type='text' v-model='inputValue'>
+        <button @click='handlebtnClick'>添加</button>
+        <ul>
+            <todo-item v-for="(item,index) in list"
+                       :content='item'
+                       :index="index"
+                       @add='handleItemAdd'>
+                
+            </todo-item>
+        </ul>
+    </div>
+    <script>
+    // 在此补充代码
+    var TodoItem = {
+        props:['content','index'],
+        template:"<li @click='handleItemClick'>{{content}}</li>",
+        methods:{
+            handleItemClick:function(){
+                this.$emit('add',this.index);
+            }
+        }
+    }
+    var app = new Vue({
+        el: "#app",
+        // 在此补充代码
+        components:{
+          TodoItem:TodoItem
+        },
+        data:{
+            list:[],
+            inputValue:''
+        },
+        methods:{
+            handlebtnClick:function(){
+                this.list.push(this.inputValue);
+                this.inputValue="";
+            },
+            handleItemAdd:function(index){
+                // this.list[index] =1;
+                this.list.splice(index,1,parseInt(this.list[index])+1);
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>

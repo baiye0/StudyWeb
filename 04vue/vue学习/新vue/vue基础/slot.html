@@ -1,0 +1,44 @@
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    #app {
+        text-align: center;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <body-component>
+            <h1 slot='title'>望岳</h1>
+            <p slot='author'>杜甫</p>
+            <p>岱宗夫如何，齐鲁青未了。</p>
+            <p>造化钟神秀，阴阳割昏晓。</p>
+            <p>荡胸生曾云，决眦入归鸟。</p>
+            <p>会当凌绝顶，一览众山小。</p>
+        </body-component>
+    </div>
+    <script>
+    Vue.component('body-component', {
+        template:`<div>
+                    <slot name='title'></slot>
+                    <slot name='author'></slot>
+                    <slot ></slot>
+                  </div>`
+    })
+    var vm = new Vue({
+        el: "#app"
+    })
+    </script>
+</body>
+
+</html>

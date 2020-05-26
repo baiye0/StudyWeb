@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // {
+        //     function People({ name, age = 0 } = { name: 'xm' }) { //第二个{}里设置默认值
+        //         return [name, age];
+        //     }
+        //     console.log(People()); //xm 0
+        //     console.log(People({})); //undefined
+        // }
+        // {
+        //     function People(x=0,y) { //参数列表不允许重名
+        //         return [x, y];
+        //     }
+        //     console.log(People(3)); //
+        //     console.log(People(1)); //undefined
+        // }
+
+        // {
+        //     function sum(...args){
+        //         let str = [...arguments];
+        //         console.log(args);
+        //         console.log(str);
+        //         console.log(arguments);
+        //         console.log(arguments instanceof Array);
+        //     }
+        //     sum(1,2,3,4,2,2,'2323213');
+
+        // }
+        // {
+        //     function sum(...nums){
+        //         return nums.reduce(function(a,b){
+        //             console.log(a,b);
+        //             return a+b;
+        //         },0);
+        //     }
+        //     console.log(sum(1,2,3,4,5));
+        // }
+        // {
+        //     function Rest(...rest){
+        //         console.log(rest);
+        //         let sum=0;
+        //         for(let i of rest) sum+=i;
+        //         return sum/rest.length;
+        //     }
+        //     console.log(Rest(2,4,8,6));
+        // }
+        {
+            function Push(arr,...args) {
+                console.log(args);
+                for(let i of args) arr.push(i);
+                return arr;
+            }
+            var arr = [];
+            console.log(Push(arr, 1, 2, 3));
+        }
+    </script>
+</body>
+
+</html>

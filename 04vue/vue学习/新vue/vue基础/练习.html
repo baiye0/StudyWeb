@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        width: 100px;
+        text-align: center;
+        line-height: 30px;
+        margin: 10px;
+        background: #073607;
+        color: #fff;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <!-- 在此补充代码 -->
+            <li v-for="(item, index) in list"
+                :style="{'background':currentidx == index ?item:'#073607'}"
+                :index='index'
+                @click="changecurrentidx(index)">
+                 {{item}}--{{index}}</lis>
+        </ul>s
+    </div>
+    <script>
+    var vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+                list: ["green", "pink", "orange", "purple"],
+                // 在此补充代码
+                currentidx:0,
+            }
+        },
+        methods: {
+            // 在此补充代码
+            changecurrentidx:function(index){
+                this.currentidx=index;
+            }
+            
+        }
+    })
+    </script>
+</body>
+
+</html>

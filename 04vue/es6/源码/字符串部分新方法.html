@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //字符串部分新方法，paStart\paEnd补全字符串
+        {
+            let str = 'i';
+            let str1 = str.padStart(8,'mooc'); //第八位是原来的字符串
+            let str3 = str.padEnd(4,'coom'); //补到第四位，也就是加上原来的字符串共四位
+            console.log(str1);
+            console.log(str3);
+        }
+
+        //repeat
+        {
+            let str = 'i';
+            let str1 = str.repeat(10);
+            console.log(str1);
+        }
+
+
+        //startWith endSwitch
+        {
+            const str = 'A promise is a promise';
+            if(str.startsWith('A')){
+                console.log('以A开头');
+            }
+            if(str.endsWith('promise')){
+                console.log('结尾');
+            }
+        }
+
+        //includes
+        {
+            const str = '_A is promise';
+            if(~str.indexOf('promise')){
+                console.log('存在');
+            }
+            if(str.includes('promise')){
+                console.log('存在');
+            }
+        }
+    </script>
+</body>
+</html>

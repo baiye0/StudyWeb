@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+    button {
+        padding: 10px 20px;
+        margin: 20px auto;
+        border-radius: 5px;
+        outline: none;
+    }
+
+    .red {
+        background: pink;
+    }
+
+    .green {
+        background: green;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 在此补充代码 -->
+        <zujian1>
+        </zujian1>
+        <zujian2></zujian2>
+    </div>
+    <script>
+    // 在此补充代码
+    //组件1
+    Vue.prototype.bus = new Vue();
+    Vue.component('zujian1',{
+    	template:"<div><zujian3 :class='red'></zujian3></div>"
+    })
+    //组件2
+    Vue.component('zujian2',{
+    	template:'<button>组件2</button>',
+    })
+    //组件3
+    Vue.component('zujian3',{
+    	template:"<button @click='handlechange'>组件3</button>",
+    	methods:{
+    		handlechange:function(){
+    			this.bus.$emit('change',)
+    		}
+    	}
+    })
+    var vm = new Vue({
+        el: "#app",
+        data:{
+        	red:'red',
+        	green:'green'
+        }
+    })
+    </script>
+</body>
+
+</html>

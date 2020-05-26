@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 在此补充代码 -->
+        <item :fruit='fruit' :content='content'></item>
+        
+    </div>
+    <script>
+    // 在此补充代码
+    Vue.component("item",{
+        props:{
+            fruit:{
+                required:true
+            },
+            content:{
+                type:String,
+                default:'简单介绍下自己喜欢的这个水果吧',
+                validator:function(value){
+                    return (value.length>=5)
+                }
+            }
+        },
+        // template:"<div><h1>{{fruit}}</h1><p>{{content}}</p></div>", //需要用一个div包裹才行，这是为什么？
+        template:"<h1>{{fruit}}</h1><p>{{content}}</p>"  
+    });
+    
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            fruit:'草莓',
+            content:"美好第一口"
+        }
+    });
+    </script>
+</body>
+
+</html>
