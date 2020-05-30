@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		
+	</div>
+	<script type="text/javascript" src='../../Vue.js'></script>
+	<script type="text/javascript">
+
+		var Child = {
+			data(){
+				return{
+					childdata:'子组件的数据'
+				}
+			},
+			props:['message'],
+			template:
+			`	<div>
+					<div>{{message}}</div>
+					<button @click='toParentData'>点击传递给子组件</button>
+				</div>
+			`,
+			methods:{
+				toParentData(){
+					// console.log(val);
+					// console.log(this.childdata);
+					this.$emit('getChildData',this.childdata);
+				}
+			},
+		}
+
+		var Parent = {
+			data(){
+				return{
+					message:'父组件的数据',
+					childdata:''
+				}
+			},
+			components:{
+				Child
+			},
+			template:`
+					<div>
+						<Child :message='message' @getChildData="setChildData" ></Child>
+						<input type="text" v-model='childdata' />
+					</div>
+			`,
+			methods:{
+				setChildData(val){
+					this.childdata = val;
+				}
+			}
+		}
+
+		new Vue({
+			el:'#app',
+			data(){
+				return{
+
+				}
+			},
+			components:{
+				Parent
+			},
+			template:`<Parent></Parent>`
+		});
+	</script>
+</body>
+</html>

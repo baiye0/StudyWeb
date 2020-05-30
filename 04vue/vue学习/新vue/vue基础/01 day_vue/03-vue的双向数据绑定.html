@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- v-model 双向数据绑定 只能应用在有value属性的标签中
+		语法糖 它是v-bind 和 v-on:input 的结合
+	 -->
+	<div id="app">
+		<input type="text" v-model="msg">
+		<h3>{{msg}}</h3>
+	</div>
+	<script type="text/javascript" src="../Vue.js"></script>
+	<script type="text/javascript">
+		new Vue({
+			el:'#app',
+			data(){
+				return{
+					msg:'哈哈哈',
+				}
+			},
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<App></App>
+	</div>
+	<script type="text/javascript" src="../../Vue.js"></script>
+	<script type="text/javascript">
+		Vue.component('Textc',{
+			data(){
+				return{
+					msg:"hellow world"
+				}
+			},
+			template:
+			`<div>
+				<div>{{msg}}</div>
+				<button @click='changerHandler'>改变</button>
+			</div>`,
+			methods:{
+				changerHandler(){
+					this.msg=this.msg +'尴尬';
+				}
+			},
+			beforeCreate:function(){
+				//组件创建之前(数据创建之前)
+				//实例化对象创建出来，但是数据没创建
+				console.log(this.msg);//undefine
+			},
+			created:function(){
+				//组件创建之后
+				console.log(this.msg);
+				//使用该组件，就会调用created方法
+				//在created这个方法中可以操作后端的数据，数据驱动视图
+				//应用：发送ajax请求。
+			},
+			beforeMount:function(){
+				//挂载数据到Dom 之前调用
+				console.log(document.getElementById('app'));
+			},
+			mounted:function(){
+				//挂载数据到dom之后 会调用Vue作用以后的dom
+				console.log(document.getElementById('app'));
+			},
+			beforeUpdate:function(){
+				//在更新dom之前更新该钩子，应用：获取原来的dom
+				console.log(document.getElementById('app').innerHTML)
+			},
+			updated:function(){
+				//可以获取最新的dom
+				console.log(document.getElementById('app').innerHTML)
+
+			},
+			beforeDestroy:function(){
+				console.log('beforedestory');
+			},
+			destroyed:function(){
+				//定时器清除 的应用
+				console.log('destoryed');
+			},
+			activated:function(){
+				console.log('组件被激活了');
+			},
+			deactivated:function(){
+				console.log('组件被停用了');
+			}
+		})
+		//缓存组件 内置<keep-alive></keep-alive>能再组件的切换过程中将状态保存在内存中。防止重复渲染dom
+		var App = {
+			data(){
+				return{
+					isShow:true
+				}
+			},
+			template:
+			`<div class='app'>
+				<keep-alive>
+					<Textc v-if='isShow'></Textc>
+				</keep-alive>
+				<button @click='isShow=!isShow'>改变生死</button>
+			</div>`
+		}
+		new Vue({
+			el:"#app",
+			data(){
+				return{
+
+				}
+			},
+			components:{
+				App
+			}
+			
+		});
+	</script>
+</body>
+</html>

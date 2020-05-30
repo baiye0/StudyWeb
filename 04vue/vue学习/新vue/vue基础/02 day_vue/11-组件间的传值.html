@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<ul>
+			<li>
+				<h3>产品名称：{{title}}</h3>
+			</li>
+		</ul>
+	</div>
+	<script type="text/javascript" src="../../Vue.js"></script>
+	<script type="text/javascript">
+
+		//产品组件
+		Vue.component("product-com",{
+			data(){
+				return{
+
+				}
+			},
+			template:
+			`
+				
+			`
+		});
+		new Vue({
+			el:"#app",
+			data(){
+				return{
+					proList:[
+						{
+							title:"产品1",
+							price:"10",
+							brief:"产品描述1"
+						},
+						{
+							title:"产品2",
+							price:"10",
+							brief:"产品描述2"
+						},
+						{
+							title:"产品2",
+							price:"10",
+							brief:"产品描述2"
+						},
+					]
+				}
+			},
+		});
+	</script>
+</body>
+</html>

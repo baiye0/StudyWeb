@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box{
+			width: 300px;
+			height: 300px;
+			background: red;
+		}
+		.active{
+			background: green;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		
+	</div>
+	<script type="text/javascript" src="../Vue.js"></script>
+	<script type="text/javascript">
+		//创建实例化对象
+		//v-text  innerText 
+		//v-html innerHTML
+		//v-if 数据属性对应的值 如果为假 则不再页面中渲染 反之亦然 不频繁使用
+		//v-show 控制dom元素的显示隐藏 display:none|block  首次开销大适用于频繁切换
+		//v-bind绑定标签上的属性，(内置和自定义) 简写:
+		//v-on:事件名 ='调用的函数' 简便写法@
+		//v-for in 优先级最大
+
+		new Vue({
+			el:"#app",
+			data:function(){
+				return {
+					//数据属性
+					msg:'指令系统',
+					msg2:'<h2>指令系统</h2>',
+					isShow:false,
+					menuLists:[
+						{id:1,name:'大腰子',price:70},
+						{id:2,name:'宫保鸡丁',price:70},
+						{id:3,name:'水煮鱼',price:60},
+					],
+					person:{
+						name:'张三',
+						age:20,
+						fav:'AV'
+					}
+				}
+			},
+			template:`
+				<div class='app'>
+					<h2>{{msg}}</h2>
+					<p v-text="msg"></p>
+					<div v-html="msg2"></div>
+					<div v-text="1+1"></div>
+					<div v-if="true">开场了</div>
+					<div v-if="Math.random()>0.5">已显示</div>
+					<div v-else="Math.random()<0.5">已关闭</div>
+					<div v-show="isShow">显示</div>
+					<div v-show="!isShow">隐藏</div>
+					<div class='box' v-bind:class="{active:isShow}" v-on:click='clickHandler'></div>
+					<ul>
+						<li v-for='item in menuLists'>
+							<h5>{{item.id}}</h5>
+							<h3>{{item.name}}</h3>
+							<em>{{item.price}}</em>
+						</li>
+					</ul>
+					<ul>
+						<li v-for='(value,key) in person'>
+							{{key}}===={{value}}
+						</li>
+					</ul>
+				</div>
+			`,
+			methods:{
+				clickHandler(e){
+					console.log(this);
+					this.isShow=!this.isShow;
+				}
+			}
+		});
+	</script>
+	
+</body>
+</html>

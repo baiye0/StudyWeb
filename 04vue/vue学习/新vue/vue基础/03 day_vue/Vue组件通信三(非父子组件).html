@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app"></div>
+	<script type="text/javascript" src='../../Vue.js'></script>
+	<script type="text/javascript">
+		var bus = new Vue();
+
+		var Brother2 = {
+			data(){
+				return{
+					msg:'我是brother2的数据'
+				}
+			},
+			methods:{
+				toBrother2Data(){
+					console.log(this.msg);
+					bus.$emit('getBrother2Data',this.msg)
+				}
+			},
+			template:
+			`
+				<div @click='toBrother2Data'>{{msg}}</div>
+			`
+		}
+		var Brother1 = {
+			data(){
+				return{
+					msg:'我是brother1的数据',
+					msg2:''
+				}
+			},
+			methods:{
+
+			},
+			template:
+			`
+				<div>{{msg}}</div>
+			`,
+			mounted(){
+				bus.$on('getBrother2Data',(val)=>{
+					this.msg =val;
+					console.log(this.msg);
+				});
+			}
+
+		}
+		var App = {
+			components:{
+				Brother1,
+				Brother2
+			},
+			template:
+			`	
+				<div>
+					<Brother1></Brother1>
+					<Brother2></Brother2>
+				</div>
+			`
+		}
+		new Vue({
+			el:'#app',
+			data(){
+				return{
+
+				}
+			},
+			components:{
+				App
+			},
+			template:
+			`
+				<App></App>
+			`
+		});
+	</script>
+</body>
+</html>

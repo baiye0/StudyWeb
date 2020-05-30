@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!--
+		路由实现：
+		1.传统开发方式请求url后，立即发送请求改变这个页面，有可能会因为资源过多出现白屏
+		2.SPA　单页面应用
+		锚点值改变后　不会立刻发送请求，而是在某个时机发送ａｊａｘ请求　页面局部渲染
+		优点：页面不立刻渲染　用户体验好
+
+	-->
+	<a href="#/login">登录</a>
+	<a href="#/register">注册</a>
+	<div id="app"></div>
+	<script type="text/javascript">
+		var app = document.getElementById('app');
+		window.onhashchange = function(){  //通过路由锚点的改变
+			console.log(location.hash);
+			switch(location.hash){
+				case '#/login':
+					app.innerHTML = '我是登录页面';
+					break;
+				case '#/register':
+					app.innerHTML = '我是注册页面';
+			}
+		}
+	</script>
+
+</body>
+</html>

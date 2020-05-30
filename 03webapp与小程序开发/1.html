@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.inp{
+			width:600px;
+			margin:100px auto;
+		}
+		input{
+			display: block;
+			width: 200px;
+			height: 30px;
+			margin-bottom: 40px;
+		}
+	</style>
+</head>
+<body>
+	<div class='inp'>
+		预算：<input type="text" name="budget" />
+		价格：<input type="text" name="price" />
+		<button class="num">计算</button>
+	</div>
+	<script type="text/javascript">
+		window.onload=function(){
+			var inp = document.getElementsByTagName('input');
+			var btn = document.getElementsByTagName('button');
+			function cal(budget,price){
+				var sum=0;
+				for(var i=0;i<price.length;i++){
+					sum += parseInt(price[i]);
+				}
+				if(sum < budget){
+					return '总价为:'+sum;
+				}else{
+					inp[0].value = '';
+					inp[1].value = '';
+					return '超过预算请重新输入';
+				}
+				
+			}
+			btn[0].addEventListener('click',function(){
+				var price = inp[1].value.split(' ');
+				var budget = parseInt(inp[0].value) || 0;
+				if(!budget){
+					return alert('请输入正整数');
+				}else{
+					alert(cal(budget,price));
+				}
+			});
+		}
+	</script>
+</body>
+</html>

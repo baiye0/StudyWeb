@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.primary{
+			background: red;
+		}
+		.success{
+			background: green;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		
+	</div>
+	<script type="text/javascript" src='../../Vue.js'></script>
+	<script type="text/javascript">
+		// 插槽 内置组件slot做为承载分发内容的出口
+
+		//全局组件
+
+		//v-bind的属性是绑定data里的数据，直接写属性只是字符串
+		Vue.component('Vbtn',{
+			template:`
+
+				
+				<button class='default' :class='type'>
+					<slot></slot>
+				</button>
+			`,
+			props:['type']
+		});
+
+		var Vheader = {
+			template:`
+				<div>我是头部组件
+					<Vbtn type='primary'>主要按钮</Vbtn>
+					<Vbtn type='success'>成功按钮</Vbtn>
+					<Vbtn>提交</Vbtn>
+				</div>
+			`
+		}
+
+		var App = {
+			data(){
+				return{
+
+				}
+			},
+			template:`
+					<div><Vheader></Vheader></div>
+			`,
+			components:{
+				Vheader
+			}
+		}
+
+		new Vue({
+			el:'#app',
+			data(){
+				return{
+
+				}
+			},
+			components:{
+				App:App
+			},
+			template:`<App></App>`
+		});
+	</script>
+</body>
+</html>

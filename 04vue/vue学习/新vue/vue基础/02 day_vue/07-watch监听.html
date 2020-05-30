@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<input type="text" v-model='msg'>
+		<h3>{{msg}}</h3>
+		<button @click="stus[0].name = 'rose'">改变</button>
+		<h4>{{stus[0].name}}</h4>
+	</div>
+	<script type="text/javascript" src='../../Vue.js'></script>
+	<script type="text/javascript">
+		// watch监听的是单个属性  基本的数据类型 简单监视   复杂的数据类型 是深度监视
+		new Vue({
+			el:"#app",
+			data(){
+				return{
+					msg:'',
+					stus:[{name:'jack'}]
+				}
+			},
+			watch:{
+				msg(newV,oldV){
+					console.log(newV,oldV);
+				},
+				//监听复杂数据类型 object 需要深度监听
+				stus:{
+					deep:true,
+					//handler是固定的方法，数组对象改变后 执行的函数
+					handler(newV,oldV){
+						console.log(newV);
+					}
+				}
+			}
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app"></div>
+	<script type="text/javascript" src="../../Vue.js"></script>
+	<script type="text/javascript">
+
+
+		//组件通信2 A-->C $attrs获取数据   C->A $listener
+		var C = {
+			data(){
+				return{
+					msgC:'我是C组件的数据'
+				}
+			},
+			template:
+			`
+				<div @click='toAData'>{{$attrs.message}}</div>
+			`,
+			methods:{
+				toAData(){
+					this.$emit('getCData',this.msgC)
+				}
+			}
+		}
+
+		var B = {
+			data(){
+				return{
+
+				}
+			},
+			components:{
+				C
+			},
+			template:
+			`
+				<C v-bind='$attrs' v-on='$listeners'></C>
+			`
+		}
+
+		var A = {
+			data(){
+				return{
+
+				}
+			},
+			// props:['message'],
+			components:{
+				B
+			},
+			template:
+			`
+				<div>
+					<B v-bind='$attrs' v-on='$listeners'></B>
+				</div>
+			`
+		}
+
+
+
+		var App = {
+			data(){
+				return{
+					msg:'我是父组件的内容'
+				}
+			},
+			methods:{
+				setCData(val){
+					console.log(val);
+				}
+
+			},
+			components:{
+				A
+			},
+			template:
+			`
+				<div>
+					<p>这是一个父组件</p>
+					<A :message='msg' @getCData='setCData'></A>
+				</div>
+			`,
+
+		}
+
+		new Vue({
+			el:'#app',
+			data(){
+				return{
+
+				}
+			},
+			components:{
+				App
+			},
+			template:
+			`
+				<App></App>
+			`
+		});
+	</script>
+</body>
+</html>

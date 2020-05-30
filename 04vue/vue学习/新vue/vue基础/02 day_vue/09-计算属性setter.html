@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<h1>{{getCurrentSongSrc}}</h1>
+		<ul>
+			<li v-for="(item,index) in musicData" @click="clickHandler(index)"><h2>{{item.id}}===={{item.name}}</h2></li>
+		</ul>
+	</div>
+	<script type="text/javascript" src='../../Vue.js'></script>
+	<script type="text/javascript">
+
+		var musicData = [
+			{id:1,name:'hhh'},
+			{id:2,name:'hhh2'},
+			{id:3,name:'hhh3'}
+		]
+		new Vue({
+			el:"#app",
+			data(){
+				return{
+					musicData,
+					currentIndex:0
+				}
+			},
+			computed:{
+				getCurrentSongSrc:{
+					set:function(newV){
+						console.log(newV);
+						this.currentIndex = newV;
+					},
+					get:function(){
+						return this.musicData[this.currentIndex].name
+					}
+				}
+				//计算默认属性只有getter
+				//计算属性可以同时监听多个事实
+				// getCurrentSongSrc:function(){
+				// 	return this.musicData[this.currentIndex].name
+				// }
+			},
+			methods:{
+				clickHandler(index){
+					//直接修改的数据属性
+					// this.currentIndex = index;
+					//getter方法
+					this.getCurrentSongSrc = index;
+				}
+			}
+
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.main{
+			margin: 50px;
+			width: 50px;
+			height: 50px;
+		}
+		.box{
+			display: inline-block;
+			width: 50px;
+			height: 50px;
+			border:1px solid #000;
+		}
+		.box:hover{
+			background: red;
+		}
+		.blue{
+			display: inline-block;
+			width: 50px;
+			height: 50px;
+			border:1px solid #000;
+			background: blue;
+		}
+	</style>
+</head>
+<body>
+	输入n:<input type="text">
+	<button>点击构建</button>
+	<div class="main">
+		<div class="box"></div>
+	</div>
+	<script type="text/javascript">
+		var inp = document.getElementsByTagName('input')[0];
+		var btn = document.getElementsByTagName('button')[0];
+		var main = document.getElementsByClassName('main')[0];
+		//动作函数
+		function createbox(num){
+			main.style.width = num*55+'px';
+			var sum = num**2;
+			var arrdiv = [];
+
+			// 创建N*N的格子
+			for(var i=0;i<(num**2);i++){
+				var box = document.createElement("div");
+				arrdiv.push(box);
+				box.className ='box';
+				main.appendChild(box);
+				
+			}
+			//给每个div添加点击事件
+			for(let j=0;j<arrdiv.length;j++){
+				let flag = true;
+				arrdiv[j].onclick = function(){
+					
+					if(flag){
+						this.className = 'blue'
+						flag = false;
+					}else{
+						this.className = 'box';
+						flag = true;
+					}
+				}
+			}
+			
+		}
+		// 给点击构建添加点击事件
+		btn.addEventListener('click',function(){
+			main.innerHTML ='';
+			createbox(inp.value);
+		})
+	</script>
+</body>
+</html>

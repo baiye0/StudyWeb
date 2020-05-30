@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		
+	</div>
+	<script type="text/javascript" src='../../Vue.js'></script>
+	<script type="text/javascript">
+
+		var App = {
+			data(){
+				return{
+
+				}
+			},
+			template:`
+					<div>
+						<button ref='btn'>我是按钮1</button>
+					</div>
+			`,
+			created(){
+				//dom还没渲染，只是构造了组件
+				console.log(this.$refs.btn);
+			},
+			beforeMount(){
+				console.log(this.$refs.btn);
+			},
+			mounted(){
+				//如果给标签绑定ref='xxx' 
+				//使用this.$refs.xxx获取原生对象
+				//ref属性不能重名
+				console.log(this.$refs.btn);
+				//如果是给组件绑定ref 那么this.$ref.xx获取的是当前的组件
+			}
+		}
+
+		new Vue({
+			el:'#app',
+			data(){
+				return{
+
+				}
+			},
+			components:{
+				App:App
+			},
+			template:`<App></App>`
+		});
+	</script>
+</body>
+</html>
