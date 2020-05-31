@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		
+	</div>
+	<script type="text/javascript" src="../../Vue.js"></script>
+	<script type="text/javascript" src="./node_modules/axios/dist/axios.js"></script>
+	<script type="text/javascript">
+
+		Vue.prototype.$axios=axios;
+		var App ={
+			template:
+			`
+				<div>
+					<button @click='sendAjax'>发送请求</button>
+				</div>
+			`,
+			methods:{
+				sendAjax(){
+					this.$axios.get('https://bird.ioliu.cn/netease/song?id=222222')
+					.then(res=>{
+						console.log(res.data.data.name);
+					})
+					.catch(err=>{
+						console.log(err);
+					})
+				}
+			}	
+		}
+		new Vue({
+			el:'#app',
+			template:'<App/>',
+			components:{
+				App
+			}
+		});
+	</script>
+</body>
+</html>
